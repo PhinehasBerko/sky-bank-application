@@ -2,7 +2,12 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>Root page</div>
+    <div className='home-content'>
+      <div className='home bg-bankGradient'>
+        home page
+      </div>
+
+    </div>
   )
 }
 
