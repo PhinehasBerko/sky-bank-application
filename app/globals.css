@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
+@source "./app/**/*.{html,js,ts,tsx}";
 @plugin "tailwindcss-animate";
-
 @variant dark (&:where(.dark-mode *));
 @layer theme, base, components, utilities;
 @layer base {

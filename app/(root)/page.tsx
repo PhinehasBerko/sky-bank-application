@@ -1,14 +1,29 @@
 import React from 'react'
 
-const page = () => {
+import HeaderBox from '@/components/HeaderBox'
+import TotalBalanceBox from '@/components/TotalBalanceBox'
+
+const Home = () => {
   return (
-    <div className='home-content'>
-      <div className='home bg-bankGradient'>
-        home page
+    <section className='home'>
+      <div className='home-content'>
+        <header className='home-header'>
+        <HeaderBox 
+        title='Welcome'
+        type='greeting'
+        user='Phiny'
+        subtext='Access and Management your Finance Effortlessly'
+         />
+
+         <TotalBalanceBox
+          account ={[]}
+          totalBanks ={1}
+          totalCurrentBalance ={1375} />
+        </header>
       </div>
 
-    </div>
+    </section>
   )
 }
 
-export default page
+export default Home
