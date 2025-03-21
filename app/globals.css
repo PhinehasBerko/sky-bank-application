@@ -155,11 +155,14 @@
     }
 
     .total-balance {
-        @apply flex w-full items-center gap-4 rounded-xl border border-gray-200 p-4 shadow-chart sm:gap-6 sm:p-6;
+        @apply flex flex-wrap w-full items-center gap-4 rounded-xl border border-gray-300 p-4 shadow-chart sm:gap-6 sm:p-6;
     }
 
+    /* .total-balance-chart { original
+        @apply flex size-full max-w-[100px] items-center sm:max-w-[120px] ;
+    } */
     .total-balance-chart {
-        @apply flex size-full max-w-[100px] items-center sm:max-w-[120px];
+        @apply flex size-full max-w-[100px] max-h-[100px] sm:max-w-[120px] sm:max-h-[120px] md:max-w-[200px] md:max-h-[200px];
     }
 
     .total-balance-label {

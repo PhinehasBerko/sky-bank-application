@@ -1,14 +1,17 @@
+import SideBar from '@/components/SideBar'
 import React from 'react'
 
 const layout = (
     {children}:Readonly<{children:React.ReactNode}>
 ) => {
+  const loggedIn ={firstName:"Phiny",lastName:"Quadwo"}
   return (
-    <main>
-        SIDEBAR
-        <div className='p-2 text-success-600'>
+
+    <main className='flex h-screen w-full font-inter'>
+        <SideBar  user ={loggedIn}/>
+        
             {children}
-        </div>
+        
         
     </main>
   )
