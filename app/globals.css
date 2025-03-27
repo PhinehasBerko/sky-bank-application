@@ -133,9 +133,9 @@
         @apply text-14 px-4 py-2.5 font-semibold;
     }
 
-    .flex-center {
+    /* .flex-center {
         @apply flex items-center justify-center;
-    }
+    } */
 
     .header-2 {
         @apply text-18 font-semibold text-gray-900;
@@ -195,7 +195,7 @@
 
     /* Right sidebar */
     .right-sidebar {  /* this had a !important */
-        @apply scrollbar-hidden hidden h-screen max-h-screen flex-col border-l border-gray-200 xl:flex w-[355px] xl:overflow-y-scroll;
+        @apply scrollbar-hidden hidden h-screen max-h-screen flex-col border-l border-gray-200 xl:flex w-[355px] xl:overflow-y-scroll ;
     }
 
     .profile-banner {
@@ -207,8 +207,8 @@
         @apply relative flex px-6 max-xl:justify-center;
     }
 
-    .profile-img {
-        @apply flex-center absolute -top-8 size-24 rounded-full bg-gray-100 border-8 border-white p-2 shadow-profile;
+    .profile-img { /* flex-center is not working here find out why */
+        @apply flex justify-center absolute -top-8 size-24 rounded-full bg-gray-100 border-8 border-white p-2 shadow-profile;
     }
 
     .profile-details {
