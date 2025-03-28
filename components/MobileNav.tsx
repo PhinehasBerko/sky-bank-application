@@ -51,7 +51,7 @@ const MobileNav = ({user}:SiderbarProps) => {
                     <Link 
                     key={linc.label} 
                     href={linc.route} 
-                    className={cn("mobilenav-sheet_close",{
+                    className={cn("mobilenav-sheet_close ml-5",{
                         'bg-bankGradient': isActive
                     })}>
                         
