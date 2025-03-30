@@ -136,7 +136,7 @@ export function countTransactionCategories(
   let totalCount = 0;
 
   // Iterate over each transaction
-  transactions &&
+  transactions && (
     transactions.forEach((transaction) => {
       // Extract the category from the transaction
       const category = transaction.category;
@@ -151,7 +151,10 @@ export function countTransactionCategories(
 
       // Increment total count
       totalCount++;
-    });
+
+    }
+  ))
+};
 
   // Convert the categoryCounts object to an array of objects
   const aggregatedCategories: CategoryCount[] = Object.keys(categoryCounts).map(
@@ -163,10 +166,7 @@ export function countTransactionCategories(
   );
 
   // Sort the aggregatedCategories array by count in descending order
-  aggregatedCategories.sort((a, b) => b.count - a.count);
-
-  return aggregatedCategories;
-}
+aggregatedCategories.sort((a, b) => b.count - a.count);
 
 export function extractCustomerIdFromUrl(url: string) {
   // Split the URL string by '/'
