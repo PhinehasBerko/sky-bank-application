@@ -2,9 +2,36 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { ProfileForm } from './CustomForm'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+
+import { z } from "zod"
+import CustomInput from './CustomInput'
+import { Button } from './ui/button'
+import { authFormSchema } from '@/lib/utils'
+import { Form } from './ui/form'
+
 const AuthForm = ({type}:{type:string}) => {
     const [user, setUser] = useState(null)
+
+    // 1. Define your form.
+  const form = useForm<z.infer<typeof authFormSchema>>({
+    resolver: zodResolver(authFormSchema),
+    defaultValues: {
+      username: "",
+      email:"",
+      password:""
+    },
+  })
+ 
+  // 2. Define a submit handler.
+  function onSubmit(values: z.infer<typeof authFormSchema>) {
+
+    alert(values.email)
+    alert(values.password)
+    alert(values.username)
+    console.log(values)
+  }
   return (
     <section className='auth-form'>
         <header className="flex flex-col gap-5 md:gap-8">
@@ -36,12 +63,40 @@ const AuthForm = ({type}:{type:string}) => {
         </header>
         {
             user ? (
-                <diV className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4">
                     {/* PlainLink    */}
-                </diV>
+                </div>
             ):(
                <>
-                    <ProfileForm/>
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)}
+                      className='space-y-8'>
+                        <CustomInput 
+                          name ="username"
+                          control={form.control}
+                          label='Username'
+                          placeholder='Enter your username'
+                          />
+                        <CustomInput 
+                          name ="email"
+                          control={form.control}
+                          label='Email'
+                          placeholder='abc@gmail.com'
+                          />
+                        <CustomInput 
+                          name ="password"
+                          control={form.control}
+                          label='Password'
+                          placeholder='password123'
+                          />
+                        <Button 
+                          type="submit" 
+                          className="p-2 border-1 bg-black/50 text-white hover:bg-gray-500/25 rounded-lg">
+                            Submit
+                        </Button>
+                    </form>
+
+                  </Form>
                </> 
             )
         }
