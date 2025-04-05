@@ -333,7 +333,7 @@
     }
 
     .form-btn {
-        @apply text-16 rounded-lg border border-bankGradient bg-bankGradient font-semibold text-white shadow-form;
+        @apply text-16 rounded-lg border border-bankGradient bg-bankGradient font-semibold text-white shadow-form cursor-pointer;
     }
 
     .form-link {
