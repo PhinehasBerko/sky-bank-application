@@ -5,11 +5,13 @@ import { createAdminClient, createSessionClient } from "../server/appwrite"
 import { cookies } from "next/headers"
 import { parseStringify } from "../utils"
 
-export  const signIn = async() =>{
+export  const signIn = async({email,password}:signInProps) =>{
     try {
         // Mutation / Database / data fetch
+        const {account} = await createAdminClient()
+        const response = await account.createEmailPasswordSession(email,password)
         
-        
+        return parseStringify(response)
     } catch (error) {
         console.error("Error",error)
     }

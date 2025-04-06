@@ -14,8 +14,9 @@ import { authFormSchema } from '@/lib/utils'
 import { signIn, signUp } from '@/lib/Actions/user.actions'
 
 const AuthForm = ({type}:{type:string}) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState("")
     const [isLoading,setIsLoading] = useState(false)
+
     const formSchema = authFormSchema(type);
     const router = useRouter()
 
@@ -33,6 +34,7 @@ const AuthForm = ({type}:{type:string}) => {
   const onSubmit = async(data: z.infer<typeof formSchema>) => {
     try {
       // Sign Up with Appwrite && create plaid token
+      setIsLoading(true)
       if(type === "sign-up"){
         const newUser = await signUp(data);
 
@@ -43,13 +45,12 @@ const AuthForm = ({type}:{type:string}) => {
       }
 
       if(type === "sign-in"){
-      //   const response = await signIn({
-      //     username: data.username,
-      //     email: data.email,
-      //     password: data.password
-      //   });
+        const response = await signIn({
+          email: data.email,
+          password: data.password
+        });
 
-      //   if(response) router.push("/")
+        if(response) router.push("/")
       console.log("Sign In",data)
       }
     } catch (error) {
@@ -106,7 +107,8 @@ const AuthForm = ({type}:{type:string}) => {
                               control={form.control}
                               label='First Name'
                               placeholder='Enter your first name'
-                              />
+                
+                />
                               <CustomInput 
                               name ="lastName"
                               control={form.control}
