@@ -3,9 +3,10 @@ import React from 'react'
 import HeaderBox from '@/components/HeaderBox'
 import TotalBalanceBox from '@/components/TotalBalanceBox'
 import RightSideBar from '@/components/RightSideBar'
+import { getLoggedInUser } from '@/lib/Actions/user.actions'
 
-const Home = () => {
-  const loggedIn = {firstName:"Phinehas",lastName:"Berko", email:"contact@skybank.org"}
+const Home = async() => {
+  const loggedIn = await getLoggedInUser()
   return (
     <section className='home'>
       <div className='home-content'>
@@ -13,7 +14,7 @@ const Home = () => {
         <HeaderBox 
         title='Welcome'
         type='greeting'
-        user='Phiny'
+        user={loggedIn?.name || "Guest"}
         subtext='Access and Management your Finance Effortlessly'
          />
 
@@ -27,7 +28,7 @@ const Home = () => {
 
       {/* RIGHT-SIDE NAVIGATIONS  */}
       <RightSideBar
-      user ={loggedIn}
+      user ={loggedIn} 
       transactions ={[]}
       banks ={[{currentBalance:1400.50},{currentBalance:3000.60}]} />
 

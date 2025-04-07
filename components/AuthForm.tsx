@@ -12,7 +12,7 @@ import { Form } from './ui/form'
 import { Loader2 } from 'lucide-react'
 import { authFormSchema } from '@/lib/utils'
 import { signIn, signUp } from '@/lib/Actions/user.actions'
-
+ 
 const AuthForm = ({type}:{type:string}) => {
     const [user, setUser] = useState("")
     const [isLoading,setIsLoading] = useState(false)
@@ -41,6 +41,7 @@ const AuthForm = ({type}:{type:string}) => {
         console.log("dummy",data)
         setUser(newUser);
         console.log("Sign Up",newUser)  
+        if(user) router.push("/sign-in")
         console.log("Plaid Token",newUser.plaidToken)
       }
 
@@ -49,9 +50,9 @@ const AuthForm = ({type}:{type:string}) => {
           email: data.email,
           password: data.password
         });
-
-        if(response) router.push("/")
-      console.log("Sign In",data)
+        console.log("response",response)
+        if(response) {router.push("/")}
+      
       }
     } catch (error) {
       console.log(error)
