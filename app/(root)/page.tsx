@@ -5,11 +5,14 @@ import TotalBalanceBox from '@/components/TotalBalanceBox'
 import RightSideBar from '@/components/RightSideBar'
 import { getLoggedInUser } from '@/lib/Actions/user.actions'
 import { getAccount, getAccounts } from '@/lib/Actions/bank.action'
+import RecentTransactions from '@/components/RecentTransactions'
 
 const Home = async({searchParams:{id, page}}:SearchParamProps) => {
   const loggedIn = await getLoggedInUser();
   const accounts = await getAccounts({userId: loggedIn.$id})
 
+  const currentPage = Number(page as string) || 1;
+  
   if(!accounts) return; // don't return the home page
   const accountsData = accounts?.data
   const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId;
@@ -37,6 +40,12 @@ const Home = async({searchParams:{id, page}}:SearchParamProps) => {
           totalCurrentBalance ={accounts?.totalCurrentBalance} />
         </header>
         {/* RECENT TRANSACTIONS */}
+        <RecentTransactions 
+          accounts ={accountsData}
+          transactions = {account?.transactions}
+          appwriteItemId ={appwriteItemId}
+          page = {currentPage}
+          />
       </div>
 
       {/* RIGHT-SIDE NAVIGATIONS  */}
