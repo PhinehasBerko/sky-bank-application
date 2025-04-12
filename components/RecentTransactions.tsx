@@ -1,13 +1,15 @@
 import Link from 'next/link'
 import React from 'react'
 import BankTabItem from './BankTabItem'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import BankInfo from './BankInfo'
 
 const RecentTransactions = ({
     accounts,
     transactions =[],
     appwriteItemId,
     page= 1
-}) => {
+}:RecentTransactionsProps) => {
   return (
     <section className='recent-transactions'>
       <header className="flex items-center justify-between">
@@ -31,6 +33,14 @@ const RecentTransactions = ({
             </TabsTrigger>
           ))}
         </TabsList> 
+        {accounts.map((account: Account)=>{
+          <TabsContent
+            value={account.appwriteItemId}
+            key={account.id}
+            className='space-y4'>
+              <BankInfo />
+            </TabsContent>
+        })}
       </Tabs>   
     </section>
   )
