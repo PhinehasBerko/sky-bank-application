@@ -33,14 +33,18 @@ const RecentTransactions = ({
             </TabsTrigger>
           ))}
         </TabsList> 
-        {accounts.map((account: Account)=>{
+        {accounts.map((account: Account)=>(
           <TabsContent
             value={account.appwriteItemId}
             key={account.id}
             className='space-y4'>
-              <BankInfo />
+              <BankInfo 
+                account={account}
+                appwriteItemId={appwriteItemId}
+                type='full'
+              />
             </TabsContent>
-        })}
+        ))}
       </Tabs>   
     </section>
   )
