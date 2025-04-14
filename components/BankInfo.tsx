@@ -1,7 +1,8 @@
+"use client"
 import { cn, formatAmount, formUrlQuery, getAccountTypeColors } from '@/lib/utils';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const BankInfo = ({account, appwriteItemId, type }:BankInfoProps) => {

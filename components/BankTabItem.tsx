@@ -1,6 +1,7 @@
+'use client'
 import React from 'react'
 import { useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { cn, formUrlQuery } from '@/lib/utils';
 const BankTabItem = ({account, appwriteItemId}: BankTabItemProps) => {
     const searchParams = useSearchParams();
