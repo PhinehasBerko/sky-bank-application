@@ -25,7 +25,6 @@ const AuthForm = ({type}:{type:string}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
       email:"",
       password:""
     },
@@ -179,12 +178,7 @@ const AuthForm = ({type}:{type:string}) => {
                             </div>
                           </>
                         )}
-                        <CustomInput 
-                          name ="username"
-                          control={form.control}
-                          label='Username'
-                          placeholder='Enter your username'
-                          />
+                        
                         <CustomInput 
                           name ="email"
                           control={form.control}
