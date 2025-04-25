@@ -7,7 +7,11 @@ import { getLoggedInUser } from '@/lib/Actions/user.actions'
 import { getAccount, getAccounts } from '@/lib/Actions/bank.action'
 import RecentTransactions from '@/components/RecentTransactions'
 
-const Home = async({searchParams:{id, page}}:SearchParamProps) => {
+const Home = async({searchParams, params}:SearchParamProps) => {
+
+  const { page} = await searchParams as { page: string };
+  const { id } = await params as { id: string };
+  
   const loggedIn = await getLoggedInUser();
   const accounts = await getAccounts({userId: loggedIn.$id})
 

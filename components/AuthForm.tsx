@@ -15,7 +15,7 @@ import { signIn, signUp } from '@/lib/Actions/user.actions'
 import PlaidLink from './PlaidLink'
  
 const AuthForm = ({type}:{type:string}) => {
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState<User>({} as User)
     const [isLoading,setIsLoading] = useState(false)
 
     const formSchema = authFormSchema(type);
